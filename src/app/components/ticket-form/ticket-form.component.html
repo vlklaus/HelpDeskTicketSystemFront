@@ -4,4 +4,7 @@
 <br />
 <label for="problem">Problem:</label>
 <input required type="text" [(ngModel)]="formTicket.problem" id="problem" />
-<button (click)=" emitSubmitted()">Submit</button>
+<button (click)="submitTicket()">Submit</button>
+@if (showThankYou) {
+    <h3>Thank you for submitting a request!</h3>
+}

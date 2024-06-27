@@ -39,4 +39,8 @@ export class TicketsComponent {
         this.getTickets();
       });
   }
+
+  /* isCompleted() {
+    this.
+  } */
 }

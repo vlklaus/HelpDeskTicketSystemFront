@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { TicketModel } from '../../models/tickets';
 import { FormsModule } from '@angular/forms';
+import { TicketsService } from '../../services/tickets.service';
 
 @Component({
   selector: 'app-ticket-form',
@@ -10,12 +11,15 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './ticket-form.component.css',
 })
 export class TicketFormComponent {
-  @Output() SubmittedForm = new EventEmitter<TicketModel>();
+  constructor (private _ticketsService: TicketsService) {}
   formTicket: TicketModel = {} as TicketModel;
+  showThankYou: boolean = false;
 
-  emitSubmitted() {
-    let newTicket: TicketModel = { ...this.formTicket };
-    newTicket.completed = false;
-    this.SubmittedForm.emit(newTicket);
+  submitTicket() {
+    this.formTicket.completed = false;
+    this._ticketsService.addTicket(this.formTicket).subscribe();
+    this.showThankYou = true;
   }
+
+
 }

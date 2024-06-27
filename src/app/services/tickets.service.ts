@@ -18,7 +18,7 @@ export class TicketsService {
   }
 
   addTicket(newTicket:TicketModel):Observable<TicketModel>{
-    return this.http.post<TicketModel>(`${this.url}api/Ticket`, newTicket);
+    return this.http.post<TicketModel>(`${this.url}/api/Ticket`, newTicket);
   }
 
   updateTicket(updateTicket:TicketModel):Observable<void>{
