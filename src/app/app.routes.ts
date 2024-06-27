@@ -1,3 +1,7 @@
 import { Routes } from '@angular/router';
+import { TicketsComponent } from './components/tickets/tickets.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+    //home page
+    {path:"", component: TicketsComponent}
+];

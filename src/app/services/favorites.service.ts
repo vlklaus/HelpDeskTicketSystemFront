@@ -15,4 +15,13 @@ export class FavoritesService {
   getAll():Observable<FavoriteModel[]> {
     return this.http.get<FavoriteModel[]>(`${this.url}/api/Favorite`);
   }
+
+  addFavorite(newFavorite:FavoriteModel):Observable<FavoriteModel>{
+    return this.http.post<FavoriteModel>(`${this.url}api/Favorite`, newFavorite)
+  }
+
+  removeFavorite(id:number):Observable<void>{
+    return this.http.delete<void>(`${this.url}/api/Ticket/${id}`);
+  }
+
 }
