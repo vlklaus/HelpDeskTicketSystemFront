@@ -1,1 +1,23 @@
-<p>tickets works!</p>
+<h1>helpdesk</h1>
+
+<table>
+  <tr>
+    <th>Ticket #</th>
+    <th>User</th>
+    <th>Report</th>
+    <th>Completed</th>
+    <th>Resolution</th>
+  </tr>
+  <tr>
+    @for (t of allTickets; track t.id) {
+    <td>{{ t.id }}</td>
+    <td>{{ t.user }}</td>
+    <td>{{ t.problem }}</td>
+    <td>{{ t.completed }}</td>
+    <td>{{ t.resolution }}</td>
+    }
+  </tr>
+</table>
+
+<!-- <h1>Ticket</h1>
+<app-ticket-form (SubmittedForm)="addTicket()"></app-ticket-form> -->

@@ -1,0 +1,7 @@
+<h1>Please fill all values to submit.</h1>
+<label for="user">Name:</label>
+<input required type="text" [(ngModel)]="formTicket.user" id="user" />
+<br />
+<label for="problem">Problem:</label>
+<input required type="text" [(ngModel)]="formTicket.problem" id="problem" />
+<button (click)=" emitSubmitted()">Submit</button>

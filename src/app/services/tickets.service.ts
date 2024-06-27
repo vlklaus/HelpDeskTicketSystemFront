@@ -10,8 +10,8 @@ export class TicketsService {
 
   constructor(private http:HttpClient) { }
 
-  //url: string = "https://localhost:7110"; //Victoria
-  url: string = "https://localhost:7110";//Clare
+
+  url: string = "https://localhost:7110";
 
   getAll():Observable<TicketModel[]> {
     return this.http.get<TicketModel[]>(`${this.url}/api/Ticket`);
