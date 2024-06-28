@@ -1,13 +1,14 @@
-<p>favorites works!</p>
-
-
-@for (f of allFavs; track f.id) {
+<button (click)="toggleDisplay()"> Toggle Display Bookmarked</button>
+@if(displayFav){
+  @for (f of allFavs; track f.id) {
     <ul>
-        <li>
-            {{f.ticket.problem}} 
-        </li>
-        <li>
-            {{f.ticket.user}} 
-        </li>
+      <li>
+        {{ f.ticket.problem }}
+      </li>
+      <li>
+        {{ f.ticket.user }}
+      </li>
     </ul>
+    }
+    
 }

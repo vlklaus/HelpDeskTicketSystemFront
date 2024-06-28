@@ -5,22 +5,16 @@
     <th>Ticket #</th>
     <th>User</th>
     <th>Report</th>
-    <th>Completed</th>
-    <th>Resolution</th>
+    <th>Bookmark</th>
+    <th>Cancel</th>
     <td></td>
   </tr>  
     @for (t of allTickets; track t.id) {
-      <tr>
-        <td>{{ t.id }}</td>
-        <td>{{ t.user }}</td>
-        <td>{{ t.problem }}</td>
-        @if (t.completed) {
-          <td> </td>
-        }
-        <td>{{ t.completed }}</td>
-        <td>{{ t.resolution }}</td>
-        <td>BM</td>
-      </tr>
+     
+        
+        <tr app-single-ticket [displayTicket]="t"> </tr>
+      
+         
     }
 </table>
 

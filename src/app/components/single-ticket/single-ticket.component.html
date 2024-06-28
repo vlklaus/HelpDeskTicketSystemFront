@@ -1,0 +1,9 @@
+<!-- <p>single-ticket works!</p> -->
+
+<td>{{ displayTicket.id }}</td>
+<td>{{ displayTicket.user }}</td>
+<td>{{ displayTicket.problem }}</td>
+@if (displayTicket.id === null) {<td><button (click)="AddFav(displayTicket)">exists</button></td>}
+@else { <td><button (click)="Deletefav(displayTicket.id)">exists</button></td>}
+
+<td>x</td>

@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FavoritesService {
+  DeleteFavorite(f: FavoriteModel) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor(private http:HttpClient) { }
 
