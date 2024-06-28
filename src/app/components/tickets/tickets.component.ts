@@ -65,7 +65,7 @@ export class TicketsComponent {
     f.ticketId = t.id;
     f.UserId = this.user.id;
     this._favService.addFavorite(f).subscribe((response:FavoriteModel)=>{
-      console.log(response)
+      console.log(response);
     })
   }
 

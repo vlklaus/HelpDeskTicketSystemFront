@@ -34,14 +34,14 @@ export class FavoritesComponent {
     });
   }
 
-  BookMarkTicket(t: TicketModel) {
+ /*  BookMarkTicket(t: TicketModel) {
     this._favService.bookmark.ticketId = t.id;
     this._favService
       .addFavorite(this._favService.bookmark)
       .subscribe((response: FavoriteModel) => {
         this.GetFavs();
       });
-  }
+  } */
 
   AddFav(t: TicketModel) {
     let f: FavoriteModel = {} as FavoriteModel;
@@ -52,8 +52,13 @@ export class FavoritesComponent {
     });
   }
 
-  DeleteFav(t: TicketModel) { let f: FavoriteModel = {} as FavoriteModel; f.ticketId = t.id;
-  f.UserId = this.user.id;
-  this._favService.DeleteFavorite(f).subscribe((response: FavoriteModel) => {
-    this.DeleteFav();}
+  DeleteFav(t: TicketModel) { 
+  /*   let f: FavoriteModel = {} as FavoriteModel; 
+    f.ticketId = t.id;
+    f.UserId = this.user.id; */
+/*     this._favService.DeleteFavorite(t.id).subscribe((response: FavoriteModel) => {
+    this.DeleteFav()); */
+
+    this._favService.removeFavorite(t.id);
+  }
 }
