@@ -7,6 +7,7 @@
     <th>Report</th>
     <th>Completed</th>
     <th>Resolution</th>
+    <td></td>
   </tr>  
     @for (t of allTickets; track t.id) {
       <tr>
@@ -18,6 +19,7 @@
         }
         <td>{{ t.completed }}</td>
         <td>{{ t.resolution }}</td>
+        <td>BM</td>
       </tr>
     }
 </table>

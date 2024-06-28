@@ -31,6 +31,11 @@ export class TicketsComponent {
 
   ngOnInit() {
     this.getTickets();
+    this.socialAuthServiceConfig.authState.subscribe((userResponse: SocialUser) => {
+      this.user = userResponse;
+      //if login fails, it will return null.
+      this.loggedIn = (userResponse != null);
+    });
   }
 
   getTickets() {
@@ -56,11 +61,11 @@ export class TicketsComponent {
     let f:FavoriteModel = {} as FavoriteModel;
     f.ticketId = t.id;
     f.UserId = this.user.id;
-    this._favService.addFavorite(f).subscribe((response:FavoriteModel) =>{
-      this.getTickets();
+    this._favService.addFavorite(f).subscribe((response:FavoriteModel)=>{
+      console.log(response)
     })
-
   }
+
 
 
   
