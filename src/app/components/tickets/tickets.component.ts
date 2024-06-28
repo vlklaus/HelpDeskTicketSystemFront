@@ -1,25 +1,33 @@
 import { Component } from '@angular/core';
 import { TicketsService } from '../../services/tickets.service';
 import { FavoritesService } from '../../services/favorites.service';
-import { TicketModel } from '../../models/tickets';
+import { FavoriteModel, TicketModel } from '../../models/tickets';
 import { FormsModule } from '@angular/forms';
 import { TicketFormComponent } from '../ticket-form/ticket-form.component';
+import { FavoritesComponent } from '../favorites/favorites.component';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-tickets',
   standalone: true,
-  imports: [FormsModule, TicketFormComponent],
+  imports: [FormsModule, TicketFormComponent, FavoritesComponent],
   templateUrl: './tickets.component.html',
   styleUrl: './tickets.component.css',
 })
 export class TicketsComponent {
   constructor(
     private _ticketService: TicketsService,
-    private _favService: FavoritesService
+    private _favService: FavoritesService,
+    private socialAuthServiceConfig: SocialAuthService
   ) {}
 
+  user:SocialUser = {} as SocialUser;
+  loggedIn: boolean = false;
+
+  displayTicket: TicketModel = {} as TicketModel;
   allTickets: TicketModel[] = [];
   formTicket: TicketModel = {} as TicketModel;
+
 
   ngOnInit() {
     this.getTickets();
@@ -40,7 +48,20 @@ export class TicketsComponent {
       });
   }
 
-  /* isCompleted() {
-    this.
-  } */
+  CompleteTicket(ticket:TicketModel){
+    this.displayTicket.completed = !this.displayTicket.completed;
+  }
+  
+  AddFav(t:TicketModel){
+    let f:FavoriteModel = {} as FavoriteModel;
+    f.ticketId = t.id;
+    f.UserId = this.user.id;
+    this._favService.addFavorite(f).subscribe((response:FavoriteModel) =>{
+      this.getTickets();
+    })
+
+  }
+
+
+  
 }

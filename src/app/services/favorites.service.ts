@@ -10,14 +10,18 @@ export class FavoritesService {
 
   constructor(private http:HttpClient) { }
 
-  url: string = "https://localhost:7110/"; //Victoria
+  url: string = "https://localhost:7110"; //Victoria
+
+  bookmark: FavoriteModel = {} as FavoriteModel;
+
+  currentUser: string = "";
 
   getAll():Observable<FavoriteModel[]> {
     return this.http.get<FavoriteModel[]>(`${this.url}/api/Favorite`);
   }
 
   addFavorite(newFavorite:FavoriteModel):Observable<FavoriteModel>{
-    return this.http.post<FavoriteModel>(`${this.url}api/Favorite`, newFavorite)
+    return this.http.post<FavoriteModel>(`${this.url}/api/Favorite`, newFavorite)
   }
 
   removeFavorite(id:number):Observable<void>{

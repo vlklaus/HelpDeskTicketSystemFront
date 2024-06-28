@@ -1,3 +1,19 @@
+
+@if (!loggedIn) {
+    <!-- Custom component that handles log in -->
+    <p>Please click to log in</p>
+    <asl-google-signin-button></asl-google-signin-button>
+  }
+  @else {
+    <!-- calls our log out method -->
 <a routerLink="/">allTickets</a>
 <a routerLink="/form">AddTicket</a>
 <router-outlet></router-outlet>
+
+
+    <button class="btn btn-outline-dark" (click)="signOut()">
+      Sign Out
+    </button>
+  }
+
+

@@ -1,1 +1,13 @@
 <p>favorites works!</p>
+
+
+@for (f of allFavs; track f.id) {
+    <ul>
+        <li>
+            {{f.ticket.problem}} 
+        </li>
+        <li>
+            {{f.ticket.user}} 
+        </li>
+    </ul>
+}

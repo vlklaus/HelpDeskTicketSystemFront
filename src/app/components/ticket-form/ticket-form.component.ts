@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { TicketModel } from '../../models/tickets';
+import { FavoriteModel, TicketModel } from '../../models/tickets';
 import { FormsModule } from '@angular/forms';
 import { TicketsService } from '../../services/tickets.service';
 
@@ -20,6 +20,7 @@ export class TicketFormComponent {
     this._ticketsService.addTicket(this.formTicket).subscribe();
     this.showThankYou = true;
   }
+
 
 
 }
