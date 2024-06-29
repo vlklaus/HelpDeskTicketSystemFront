@@ -12,6 +12,7 @@ export class TicketsService {
 
 
   url: string = "https://localhost:7110";
+
   currentTicket: TicketModel = {} as TicketModel;
 
   getAll():Observable<TicketModel[]> {

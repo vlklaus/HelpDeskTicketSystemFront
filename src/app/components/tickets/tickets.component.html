@@ -10,7 +10,7 @@
     <td></td>
   </tr>  
     @for (t of allTickets; track t.id) {
-      <tr app-single-ticket [displayTicket]="t"><button (click)="AddFav(t)">Bookmark Fav</button></tr>      
+      <tr app-single-ticket [displayTicket]="t" (bookmark)="AddFav($event)"></tr>      
       
     }
 </table>

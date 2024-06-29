@@ -20,8 +20,10 @@ export class FavoritesComponent {
   ) {}
 
   allFavs: FavoriteModel[] = [];
+  fidnumbers: number[] = [];
   user: SocialUser = {} as SocialUser;
   displayFav: boolean = false;
+
   ngOnInit() {
     this.GetFavs();
   }
@@ -32,35 +34,32 @@ export class FavoritesComponent {
     this._favService.getAll().subscribe((response: FavoriteModel[]) => {
       console.log(response);
       this.allFavs = response;
+      this.GetFavs();
     });
   }
 
- /*  BookMarkTicket(t: TicketModel) {
-    this._favService.bookmark.ticketId = t.id;
-    this._favService
-      .addFavorite(this._favService.bookmark)
-      .subscribe((response: FavoriteModel) => {
-        this.GetFavs();
-      });
-  } */
+// GetFavoriteTicketIds() {
+//   this._favService.getAllTicketIds()
+//     .subscribe(ticketIds => {
+//       this.fidnumbers = ticketIds;
+//     });
+// }
 
-  /* AddFav(t: TicketModel) {
-    let f: FavoriteModel = {} as FavoriteModel;
-    f.ticketId = t.id;
-    f.UserId = this.user.id;
-    this._favService.addFavorite(f).subscribe((response: FavoriteModel) => {
-      this.GetFavs();
-    });
-  } */
+isFavorite(ticketId: number):boolean{
+  return this.fidnumbers.includes(ticketId);
+}
 
   DeleteFav(f: FavoriteModel) { 
     this._favService.removeFavorite(f.ticketId).subscribe((response) => {
       this.GetFavs();
+
+    });
+  }
+}
+
+
       /*   let f: FavoriteModel = {} as FavoriteModel; 
         f.ticketId = t.id;
         f.UserId = this.user.id; */
     /*     this._favService.DeleteFavorite(t.id).subscribe((response: FavoriteModel) => {
         this.DeleteFav()); */
-    });
-  }
-}

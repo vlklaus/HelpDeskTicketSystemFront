@@ -30,6 +30,7 @@ export class TicketsComponent {
   displayTicket: TicketModel = {} as TicketModel;
   allTickets: TicketModel[] = [];
   formTicket: TicketModel = {} as TicketModel;
+  Favorites: FavoriteModel[] = [];
 
 
   ngOnInit() {
@@ -60,6 +61,12 @@ export class TicketsComponent {
     this.displayTicket.completed = !this.displayTicket.completed;
   }
 
+  GetFavs() {
+    this._favService.getAll().subscribe((response: FavoriteModel[]) => {
+      console.log(response);
+      this.Favorites = response;
+    });
+  }
 
   AddFav(t:TicketModel){
     let f:FavoriteModel = {} as FavoriteModel;
@@ -67,6 +74,8 @@ export class TicketsComponent {
     f.UserId = this.user.id;
     this._favService.addFavorite(f).subscribe((response:FavoriteModel)=>{
       console.log(response);
+      this.Favorites.push(response)
+      this.GetFavs();
     })
   }
 
@@ -74,6 +83,12 @@ export class TicketsComponent {
     let index:number=this.allTickets.findIndex(x=> x == i)
     this.allTickets.splice(index, 1)
   }
+
+// IsFavorite(ticketId: number): boolean {
+//   this.Favorites
+//   return this.Favorites.ticketid
+// }
+  
 
   
 }

@@ -11,8 +11,8 @@ export class FavoritesService {
 
   url: string = "https://localhost:7110"; //Victoria
 
-  bookmark: FavoriteModel = {} as FavoriteModel;
 
+  bookmark: FavoriteModel = {} as FavoriteModel;
   currentUser: string = "";
 
   getAll():Observable<FavoriteModel[]> {
@@ -26,5 +26,10 @@ export class FavoritesService {
   removeFavorite(id:number):Observable<void>{
     return this.http.delete<void>(`${this.url}/api/Favorite/${id}`);
   }
+
+  // getAllTicketIds(): Observable<number[]> {
+  //   return this.http.get<number[]>(`${this.url}/api/Favorite/ticketIds`);
+  // }
+
 
 }
