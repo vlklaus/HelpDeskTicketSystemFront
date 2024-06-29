@@ -7,11 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FavoritesService {
-  DeleteFavorite(f: FavoriteModel) {
-    throw new Error('Method not implemented.');
-  }
-
-  constructor(private http:HttpClient) { }
+   constructor(private http:HttpClient) { }
 
   url: string = "https://localhost:7110"; //Victoria
 
@@ -28,7 +24,7 @@ export class FavoritesService {
   }
 
   removeFavorite(id:number):Observable<void>{
-    return this.http.delete<void>(`${this.url}/api/Ticket/${id}`);
+    return this.http.delete<void>(`${this.url}/api/Favorite/${id}`);
   }
 
 }

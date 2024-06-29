@@ -10,9 +10,12 @@
     <td></td>
   </tr>  
     @for (t of allTickets; track t.id) {
-      <tr app-single-ticket [displayTicket]="t"> </tr>      
+      <tr app-single-ticket [displayTicket]="t"><button (click)="AddFav(t)">Bookmark Fav</button></tr>      
+      
     }
 </table>
+
+
 
 <!-- <h1>Ticket</h1>
 <app-ticket-form (SubmittedForm)="addTicket()"></app-ticket-form> -->

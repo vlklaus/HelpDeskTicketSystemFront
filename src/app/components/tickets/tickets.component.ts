@@ -59,7 +59,8 @@ export class TicketsComponent {
   CompleteTicket(ticket:TicketModel){
     this.displayTicket.completed = !this.displayTicket.completed;
   }
-  
+
+
   AddFav(t:TicketModel){
     let f:FavoriteModel = {} as FavoriteModel;
     f.ticketId = t.id;

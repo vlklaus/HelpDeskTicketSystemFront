@@ -4,11 +4,12 @@ import { FavoritesService } from '../../services/favorites.service';
 import { FavoriteModel, TicketModel } from '../../models/tickets';
 import { TicketsComponent } from '../tickets/tickets.component';
 import { SocialUser } from '@abacritt/angularx-social-login';
+import { SingleTicketComponent } from '../single-ticket/single-ticket.component';
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [TicketsComponent],
+  imports: [TicketsComponent, SingleTicketComponent],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css',
 })
@@ -43,22 +44,23 @@ export class FavoritesComponent {
       });
   } */
 
-  AddFav(t: TicketModel) {
+  /* AddFav(t: TicketModel) {
     let f: FavoriteModel = {} as FavoriteModel;
     f.ticketId = t.id;
     f.UserId = this.user.id;
     this._favService.addFavorite(f).subscribe((response: FavoriteModel) => {
       this.GetFavs();
     });
-  }
+  } */
 
-  DeleteFav(t: TicketModel) { 
-  /*   let f: FavoriteModel = {} as FavoriteModel; 
-    f.ticketId = t.id;
-    f.UserId = this.user.id; */
-/*     this._favService.DeleteFavorite(t.id).subscribe((response: FavoriteModel) => {
-    this.DeleteFav()); */
-
-    this._favService.removeFavorite(t.id);
+  DeleteFav(f: FavoriteModel) { 
+    this._favService.removeFavorite(f.ticketId).subscribe((response) => {
+      this.GetFavs();
+      /*   let f: FavoriteModel = {} as FavoriteModel; 
+        f.ticketId = t.id;
+        f.UserId = this.user.id; */
+    /*     this._favService.DeleteFavorite(t.id).subscribe((response: FavoriteModel) => {
+        this.DeleteFav()); */
+    });
   }
 }

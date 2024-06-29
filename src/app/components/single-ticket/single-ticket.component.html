@@ -3,7 +3,6 @@
 <td>{{ displayTicket.id }}</td>
 <td>{{ displayTicket.user }}</td>
 <td>{{ displayTicket.problem }}</td>
-@if (displayTicket.id === null) {<td><button (bookmark)="emitBookmark()">Bookmark</button></td>}
-@else { <td><button (delete)="emitDelete()">Remove Favorite</button></td>}
-
+@if (displayTicket.id == favTicket.ticketId) {<td><button (click)="emitBookmark()">Bookmark</button></td>}
+@else { <td><button (click)="emitDelete()">Remove</button></td>}
 <td>x</td>

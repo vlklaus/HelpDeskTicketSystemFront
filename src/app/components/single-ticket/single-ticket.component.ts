@@ -1,11 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FavoriteModel, TicketModel } from '../../models/tickets';
 import { TicketsComponent } from '../tickets/tickets.component';
+import { FavoritesComponent } from '../favorites/favorites.component';
 
 @Component({
   selector: 'tr[app-single-ticket]',
   standalone: true,
-  imports: [TicketsComponent],
+  imports: [TicketsComponent, FavoritesComponent],
   templateUrl: './single-ticket.component.html',
   styleUrl: './single-ticket.component.css',
 })
@@ -16,13 +17,17 @@ export class SingleTicketComponent {
 
   favTicket: FavoriteModel = {} as FavoriteModel;
 
+  //delete ticket
   emitDelete() {
-    if (this.favTicket)
     this.delete.emit(this.displayTicket);
   }  
 
+  //bookmark ticket
   emitBookmark() {
     this.bookmark.emit(this.displayTicket);
+    
   }
+
+
 }
 
