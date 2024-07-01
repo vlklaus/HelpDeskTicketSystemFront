@@ -1,8 +1,10 @@
-<!-- <p>single-ticket works!</p> -->
-
-<td>{{ displayTicket.id }}</td>
+<td routerLink="resolveForm/{{displayTicket.id}}">{{ displayTicket.id }}</td>
 <td>{{ displayTicket.user }}</td>
-<td>{{ displayTicket.problem }}</td>
-@if (favTicket.ticketId == null) {<td><button (click)="emitBookmark()">Bookmark</button></td>}
-@else { <td><button (click)="emitDelete()">Remove</button></td>}
-<td>x</td>
+<td>{{displayTicket.problem}}</td>
+@if (displayTicket.completed) {<td> ✔</td>}
+@else {<td></td>}
+<td>{{displayTicket.resolution}}</td>
+
+@if (IsFavorite() == false) {<td><button (click)="emitBookmark()">Bookmark</button></td>}
+@else { <td><button (click)="DeleteFav(displayTicket)">Remove Bookmark</button></td>}
+<td><button (click)="emitDelete()">X</button></td>

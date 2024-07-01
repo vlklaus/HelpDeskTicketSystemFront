@@ -37,14 +37,16 @@ export class TicketsComponent {
     this.getTickets();
     this.socialAuthServiceConfig.authState.subscribe((userResponse: SocialUser) => {
       this.user = userResponse;
+      console.log(this.user)
       //if login fails, it will return null.
       this.loggedIn = (userResponse != null);
+      this.GetFavs();
     });
   }
 
   getTickets() {
     this._ticketService.getAll().subscribe((response: TicketModel[]) => {
-      console.log(response);
+      // console.log(response);
       this.allTickets = response;
     });
   }
@@ -61,34 +63,33 @@ export class TicketsComponent {
     this.displayTicket.completed = !this.displayTicket.completed;
   }
 
+
   GetFavs() {
     this._favService.getAll().subscribe((response: FavoriteModel[]) => {
       console.log(response);
       this.Favorites = response;
+      this.Favorites = this.Favorites.filter(f => f.userId == this.user.id);
+      console.log(this.Favorites);
     });
   }
 
   AddFav(t:TicketModel){
     let f:FavoriteModel = {} as FavoriteModel;
     f.ticketId = t.id;
-    f.UserId = this.user.id;
+    f.userId = this.user.id;
     this._favService.addFavorite(f).subscribe((response:FavoriteModel)=>{
-      console.log(response);
-      this.Favorites.push(response)
+      // console.log(response);
       this.GetFavs();
     })
   }
 
   deleteTicket(i:TicketModel){
-    let index:number=this.allTickets.findIndex(x=> x == i)
-    this.allTickets.splice(index, 1)
+    let index:number = this.allTickets.findIndex(x=> x == i);
+    this.allTickets.splice(index, 1);
   }
 
-// IsFavorite(ticketId: number): boolean {
-//   this.Favorites
-//   return this.Favorites.ticketid
-// }
-  
+
+
 
   
 }

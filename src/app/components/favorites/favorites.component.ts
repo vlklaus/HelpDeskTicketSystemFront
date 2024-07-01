@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TicketsService } from '../../services/tickets.service';
 import { FavoritesService } from '../../services/favorites.service';
 import { FavoriteModel, TicketModel } from '../../models/tickets';
@@ -23,36 +23,21 @@ export class FavoritesComponent {
   fidnumbers: number[] = [];
   user: SocialUser = {} as SocialUser;
   displayFav: boolean = false;
+  @Input() favoriteTickets: FavoriteModel [] = [];
+  @Output() delete = new EventEmitter<FavoriteModel>();
 
-  ngOnInit() {
-    this.GetFavs();
-  }
   toggleDisplay() {
     this.displayFav = !this.displayFav;
   }
-  GetFavs() {
-    this._favService.getAll().subscribe((response: FavoriteModel[]) => {
-      console.log(response);
-      this.allFavs = response;
-      this.GetFavs();
-    });
+
+
+  isFavorite(ticketId: number):boolean{
+    return this.fidnumbers.includes(ticketId);
   }
-
-// GetFavoriteTicketIds() {
-//   this._favService.getAllTicketIds()
-//     .subscribe(ticketIds => {
-//       this.fidnumbers = ticketIds;
-//     });
-// }
-
-isFavorite(ticketId: number):boolean{
-  return this.fidnumbers.includes(ticketId);
-}
 
   DeleteFav(f: FavoriteModel) { 
     this._favService.removeFavorite(f.ticketId).subscribe((response) => {
-      this.GetFavs();
-
+      this.delete.emit(f);
     });
   }
 }

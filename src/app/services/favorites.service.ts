@@ -27,9 +27,5 @@ export class FavoritesService {
     return this.http.delete<void>(`${this.url}/api/Favorite/${id}`);
   }
 
-  // getAllTicketIds(): Observable<number[]> {
-  //   return this.http.get<number[]>(`${this.url}/api/Favorite/ticketIds`);
-  // }
-
 
 }

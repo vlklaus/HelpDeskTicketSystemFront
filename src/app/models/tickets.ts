@@ -9,7 +9,7 @@ export interface TicketModel {
 export interface FavoriteModel {
     id:       number;
     ticketId: number;
-    UserId:   string;
+    userId:   string;
     ticket:   TicketModel;
 }
 

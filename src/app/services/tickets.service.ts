@@ -19,6 +19,10 @@ export class TicketsService {
     return this.http.get<TicketModel[]>(`${this.url}/api/Ticket`);
   }
 
+  getById(id: number):Observable<TicketModel> {
+    return this.http.get<TicketModel>(`${this.url}/api/Ticket/${id}`);
+  }
+
   addTicket(newTicket:TicketModel):Observable<TicketModel>{
     return this.http.post<TicketModel>(`${this.url}/api/Ticket`, newTicket);
   }

@@ -4,19 +4,16 @@
   <tr>
     <th>Ticket #</th>
     <th>User</th>
-    <th>Report</th>
+    <th>Problem</th>
+    <th>Completed</th>
+    <th>Resolution</th>
     <th>Bookmark</th>
     <th>Cancel</th>
     <td></td>
   </tr>  
     @for (t of allTickets; track t.id) {
-      <tr app-single-ticket [displayTicket]="t" (bookmark)="AddFav($event)"></tr>      
-      
+      <tr app-single-ticket [displayTicket]="t" [favoriteTickets]="Favorites" (bookmark)="AddFav($event)" (delete)="deleteTicket(t)"></tr>            
     }
 </table>
 
-
-
-<!-- <h1>Ticket</h1>
-<app-ticket-form (SubmittedForm)="addTicket()"></app-ticket-form> -->
-<app-favorites></app-favorites>
+<app-favorites [favoriteTickets]="Favorites" (delete)="GetFavs()"></app-favorites>

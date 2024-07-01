@@ -1,6 +1,6 @@
 <button (click)="toggleDisplay()"> Toggle Display Bookmarked</button>
 @if(displayFav){
-  @for (f of allFavs; track f.id) {
+  @for (f of favoriteTickets; track f.id) {
     <ul>
       <li>{{ f.ticket.problem }} {{ f.ticket.user }} <button (click)="DeleteFav(f)">Delete Bookmark</button></li>
     </ul>

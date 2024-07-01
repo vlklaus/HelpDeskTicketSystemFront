@@ -4,12 +4,13 @@ import { TicketsComponent } from './components/tickets/tickets.component';
 import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
 import { FormsModule } from '@angular/forms';
 import { GoogleSigninButtonModule, SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { ResolutionFormComponent } from './components/resolution-form/resolution-form.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, TicketsComponent, TicketFormComponent, RouterLink, FormsModule, GoogleSigninButtonModule],
+  imports: [RouterOutlet, TicketsComponent, TicketFormComponent, RouterLink, FormsModule, GoogleSigninButtonModule, ResolutionFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

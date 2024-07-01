@@ -1,0 +1,10 @@
+<label for="resolution">Resolution:</label>
+<input id="resolution" type="text" [(ngModel)]="formResolution.resolution"/>
+
+<label>Completed?</label>
+<input type="checkbox" value="true" [(ngModel)]="formResolution.completed"/>
+
+<label for="resolvedBy"> Completed By:</label>
+<input id="resolvedBy" type="text" [(ngModel)]="resolvedBy" />
+
+<button (click)="updateTicket()" >Submit Resolution</button>
