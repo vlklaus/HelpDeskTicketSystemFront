@@ -20,7 +20,6 @@ export class FavoritesComponent {
   ) {}
 
   allFavs: FavoriteModel[] = [];
-  fidnumbers: number[] = [];
   user: SocialUser = {} as SocialUser;
   displayFav: boolean = false;
   @Input() favoriteTickets: FavoriteModel [] = [];
@@ -31,9 +30,7 @@ export class FavoritesComponent {
   }
 
 
-  isFavorite(ticketId: number):boolean{
-    return this.fidnumbers.includes(ticketId);
-  }
+
 
   DeleteFav(f: FavoriteModel) { 
     this._favService.removeFavorite(f.ticketId).subscribe((response) => {
@@ -42,9 +39,3 @@ export class FavoritesComponent {
   }
 }
 
-
-      /*   let f: FavoriteModel = {} as FavoriteModel; 
-        f.ticketId = t.id;
-        f.UserId = this.user.id; */
-    /*     this._favService.DeleteFavorite(t.id).subscribe((response: FavoriteModel) => {
-        this.DeleteFav()); */
